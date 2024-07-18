@@ -38,6 +38,7 @@ export default defineType({
         list: [
           {title: 'Type A', value: 'a'},
           {title: 'Type B', value: 'b'},
+          {title: 'Type C (Grid)', value: 'c'},
         ],
       },
     }),
@@ -52,7 +53,7 @@ export default defineType({
           if (parent?.layoutType === 'a' && currentValue === undefined) return 'This is required'
           return true
         }),
-      hidden: ({parent}) => parent?.layoutType === 'b',
+      hidden: ({parent}) => parent?.layoutType === 'b' || parent?.layoutType === 'c',
     }),
     defineField({
       name: 'list',
