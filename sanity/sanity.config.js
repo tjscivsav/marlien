@@ -26,11 +26,11 @@ export default defineConfig({
           title: 'My Netlify deploys',
           sites: [
             {
-              title: 'Meleana',
-              apiId: 'e6012937-3e1e-4752-a43e-461815821a87',
-              buildHookId: '668fb92779a085213d82a3b2',
-              name: 'meleana',
-              url: 'https://meleana.netlify.app/',
+              title: 'Marlien',
+              apiId: 'fb5cb1f6-2de5-44fe-9fcf-af6f4158e5c6',
+              buildHookId: '66994fcd52b08922dec88253',
+              name: 'marlien',
+              url: 'https://marlien.netlify.app/',
             },
           ],
         }),
