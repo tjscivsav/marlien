@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { client } from "../utils/shopify-client";
+// import { client } from "../utils/shopify-client";
 const defaultValues = {
   cart: [],
   isOpen: false,
@@ -41,24 +41,23 @@ export const StoreProvider = ({ children }) => {
 
       if (existingCheckoutID && existingCheckoutID !== "null") {
         try {
-          const existingCheckout = await client.checkout.fetch(
-            existingCheckoutID
-          );
-          if (existingCheckout) {
-            setCheckoutId(existingCheckout);
-
-            setCheckout(existingCheckout);
-            setLoading(false);
-            return;
-          }
+          // const existingCheckout = await client.checkout.fetch(
+          //   existingCheckoutID
+          // );
+          // if (existingCheckout) {
+          //   setCheckoutId(existingCheckout);
+          //   setCheckout(existingCheckout);
+          //   setLoading(false);
+          //   return;
+          // }
         } catch (e) {
           localStorage.setItem(localStorageKey, null);
         }
       }
-      const newCheckout = await client.checkout.create();
-      setCheckout(newCheckout);
+      // const newCheckout = await client.checkout.create();
+      // setCheckout(newCheckout);
 
-      setCheckoutId(newCheckout);
+      // setCheckoutId(newCheckout);
     };
 
     initializeCheckout();
@@ -90,17 +89,17 @@ export const StoreProvider = ({ children }) => {
 
     const checkoutId = checkout.id;
     const lineItemIdsToRemove = [lineItemID];
-    const response = await client.checkout.removeLineItems(
-      checkoutId,
-      lineItemIdsToRemove
-    );
-    if (response) {
-      toast.dismiss(toastId);
-      setCheckout(response);
-      setUpdating(false);
-      toast.success("Item successfully removed");
-      return;
-    }
+    // const response = await client.checkout.removeLineItems(
+    //   checkoutId,
+    //   lineItemIdsToRemove
+    // );
+    // if (response) {
+    //   toast.dismiss(toastId);
+    //   setCheckout(response);
+    //   setUpdating(false);
+    //   toast.success("Item successfully removed");
+    //   return;
+    // }
     setUpdating(false);
   };
 
@@ -123,17 +122,17 @@ export const StoreProvider = ({ children }) => {
         quantity: i.quantity,
       };
     });
-    const response = await client.checkout.updateLineItems(
-      cartID,
-      lineItemsToUpdate
-    );
-    if (response) {
-      toast.dismiss(toastId);
-      setCheckout(response);
-      setUpdating(false);
-      toast.success("Cart has been updated");
-      return;
-    }
+    // const response = await client.checkout.updateLineItems(
+    //   cartID,
+    //   lineItemsToUpdate
+    // );
+    // if (response) {
+    //   toast.dismiss(toastId);
+    //   setCheckout(response);
+    //   setUpdating(false);
+    //   toast.success("Cart has been updated");
+    //   return;
+    // }
     setUpdating(false);
   };
 
@@ -168,19 +167,19 @@ export const StoreProvider = ({ children }) => {
         quantity: parseInt(quantity),
       },
     ];
-    const response = await client.checkout.addLineItems(
-      checkoutId,
-      lineItemsToAdd
-    );
+    // const response = await client.checkout.addLineItems(
+    //   checkoutId,
+    //   lineItemsToAdd
+    // );
 
-    console.log(response);
-    if (response) {
-      toast.dismiss(toastId);
-      setCheckout(response);
-      setUpdating(false);
-      toast.success("Item Successfully added");
-      return;
-    }
+    // console.log(response);
+    // if (response) {
+    //   toast.dismiss(toastId);
+    //   setCheckout(response);
+    //   setUpdating(false);
+    //   toast.success("Item Successfully added");
+    //   return;
+    // }
     setUpdating(false);
     toast.dismiss(toastId);
   };
