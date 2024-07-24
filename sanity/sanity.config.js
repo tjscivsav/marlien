@@ -61,7 +61,7 @@ export default defineConfig([
     },
   },
   {
-    name: 'default',
+    name: 'dev',
     title: 'Marlien Linkinbio Dev',
     basePath: '/dev',
     projectId: 'q1h5np7y',
