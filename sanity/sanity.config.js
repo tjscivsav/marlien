@@ -77,9 +77,9 @@ export default defineConfig([
               {
                 title: 'Marlien Dev',
                 apiId: 'fb5cb1f6-2de5-44fe-9fcf-af6f4158e5c6',
-                buildHookId: '66994fcd52b08922dec88253',
+                buildHookId: '66a10aa7e83d7c376d1b6ad6',
                 name: 'marlien-dev',
-                url: 'https://experiment.netlify.app/',
+                url: 'https://experiment--marlien.netlify.app',
                 branch: 'experiment',
               },
             ],
