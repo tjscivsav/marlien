@@ -15,6 +15,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@akcybex/sanity-netlify-tool": "^1.0.6",
     "@sanity/color-input": "^3.1.1",
     "@sanity/dashboard": "^4.0.0",
     "@sanity/vision": "^3.51.0",
