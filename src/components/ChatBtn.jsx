@@ -116,54 +116,34 @@ export default function ChatBtn({ data }) {
     setPhone(formattedPhoneNumber);
   };
 
-  const onSubmit = (evt) => {
+  const onSubmit = async (evt) => {
     evt.preventDefault();
-    const d = {
-      data: {
-        email: email,
-        phone: phone,
-        date: new Date().toUTCString(),
-        website: window.location.origin,
-      },
-      sheetID: 18,
-    };
+
     setLoading(true);
-    fetch("https://leads.civsav.com/template/contact", {
-      method: "POST",
-      body: JSON.stringify(d),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((res) => res.json())
-      .then(() => {
-        if (btnType === "chatbot") {
-          localStorage.setItem("@chatbot-email", `${email}`);
-          window?.voiceflow?.chat
-            .load({
-              verify: { projectID: "6572ef6ae8da52daff168066" },
-              url: "https://general-runtime.voiceflow.com",
-              versionID: "production",
-              assistant: {
-                title: botName,
-                description: des,
-                image: avatar?.asset?.url,
-                avatar: avatar?.asset?.url,
-                color: botColor?.hex,
-              },
-            })
-            .then(() => {
-              window.voiceflow.chat.open();
-              setAiLoaded(true);
-            });
-        }
+
+    try {
+      const response = await fetch("/.netlify/functions/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, phone }),
+      });
+
+      const result = await response.json();
+
+      console.log(response, result);
+      if (response.ok) {
         setLoading(false);
         onClose();
-      })
-      .catch(() => {
-        setLoading(false);
-        alert("Something went wrong! Please try again");
-      });
+      } else {
+        alert(result.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setLoading(false);
+      alert("Something went wrong! Please try again");
+    }
   };
 
   return (
