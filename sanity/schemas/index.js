@@ -45,6 +45,7 @@ import section from './objects/home/section'
 import update from './objects/home/update'
 import videoItem from './objects/home/update/item'
 import videoLink from './objects/home/videoLink.js'
+import embeded from './objects/common/embeded.js'
 
 // Shopify
 
@@ -98,6 +99,7 @@ export const schemaTypes = [
   title,
   gallery,
   videoLink,
+  embeded,
   link,
 
   // Shopify

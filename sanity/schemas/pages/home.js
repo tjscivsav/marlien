@@ -41,6 +41,7 @@ export default defineType({
       description: 'Section order changeable',
       of: [
         {type: 'coaching'},
+        {type: 'embedSection'},
         {type: 'collection'},
         {type: 'blogSection'},
         {type: 'update'},

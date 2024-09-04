@@ -97,6 +97,26 @@ export default function Home({ data: { sanityHomePage, sanitySiteSettings } }) {
       case "poster": {
         return enable && <Poster data={item} key={key} />;
       }
+      case "embedSection":
+        return (
+          enable && (
+            <div
+              className="w-full"
+              style={{
+                background:
+                  "linear-gradient(to right, rgb(255, 255, 255), rgb(249, 249, 249))",
+              }}
+            >
+              <div
+                className="overflow-hidden embed max-w-6xl mx-auto"
+                key={key}
+                dangerouslySetInnerHTML={{
+                  __html: item.code,
+                }}
+              />
+            </div>
+          )
+        );
       default:
         return null;
     }
@@ -756,6 +776,11 @@ export const query = graphql`
               }
             }
           }
+        }
+        ... on SanityEmbedSection {
+          _type
+          enable
+          code
         }
         ... on SanityTextBox {
           _type
