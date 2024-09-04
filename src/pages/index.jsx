@@ -108,7 +108,7 @@ export default function Home({ data: { sanityHomePage, sanitySiteSettings } }) {
               }}
             >
               <div
-                className="overflow-hidden embed max-w-6xl mx-auto"
+                className="overflow-hidden embed max-w-[1050px] mx-auto"
                 key={key}
                 dangerouslySetInnerHTML={{
                   __html: item.code,
