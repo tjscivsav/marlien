@@ -38,7 +38,7 @@ const ToggleButton = ({ links }) => {
             return (
               <Link
                 key={key}
-                className="text-white clear-both whitespace-nowrap inline-block overflow-hidden"
+                className="text-white clear-both whitespace-nowrap inline-block overflow-hidden cursor-pointer"
                 to={link.sectionId}
                 smooth={true}
                 duration={500}
@@ -50,7 +50,7 @@ const ToggleButton = ({ links }) => {
             return (
               <a
                 key={key}
-                className="text-white clear-both whitespace-nowrap inline-block overflow-hidden"
+                className="text-white clear-both whitespace-nowrap inline-block overflow-hidden cursor-pointer"
                 href={link.url}
                 target="_blank"
               >
