@@ -27,17 +27,43 @@ const breakpointColumnsObj2 = {
   640: 1,
 };
 
-export function DivContainer({ imgLink, children, cls, linkType, sectionId }) {
+export function DivContainer({
+  imgLink,
+  children,
+  cls,
+  linkType,
+  sectionId,
+  title,
+}) {
+  const onClick = ({ link }) => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "position_ranking", {
+        link_text: title,
+        url: link,
+      });
+    }
+  };
   if (linkType === "sectionId") {
     return (
-      <Link className={`${cls}`} to={sectionId} smooth={true} duration={500}>
+      <Link
+        className={`${cls}`}
+        to={sectionId}
+        smooth={true}
+        duration={500}
+        onClick={() => onClick(sectionId)}
+      >
         {children}
       </Link>
     );
   }
   if (linkType !== "sectionId" && imgLink) {
     return (
-      <a className={`${cls}`} href={imgLink} target="_blank">
+      <a
+        className={`${cls}`}
+        href={imgLink}
+        target="_blank"
+        onClick={() => onClick(imgLink)}
+      >
         {children}
       </a>
     );

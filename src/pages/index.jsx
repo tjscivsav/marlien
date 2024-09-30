@@ -91,7 +91,6 @@ export default function Home({ data: { sanityHomePage, sanitySiteSettings } }) {
         return enable && <Gallery data={item} key={key} />;
       }
       case "collage": {
-        console.log(item);
         return enable && <Collage data={item} key={key} />;
       }
       case "poster": {
