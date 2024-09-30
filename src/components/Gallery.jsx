@@ -227,6 +227,7 @@ export default function Gallery({ data }) {
                                 imgLink={item?.imgLink}
                                 linkType={item?.linkType}
                                 sectionId={item?.sectionId}
+                                title={item?.title?.txt}
                                 cls={`overflow-hidden aspect-square cursor-pointer relative w-full h-full block ${
                                   data.layoutType !== "full-width" &&
                                   "rounded-[20px]"
@@ -388,6 +389,7 @@ export default function Gallery({ data }) {
                           imgLink={item?.imgLink}
                           linkType={item?.linkType}
                           sectionId={item?.sectionId}
+                          title={item?.title?.txt}
                           cls={`overflow-hidden aspect-square cursor-pointer relative w-full h-full block ${
                             data.layoutType !== "full-width" && "rounded-[20px]"
                           }`}
