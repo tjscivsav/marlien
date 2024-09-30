@@ -35,7 +35,7 @@ export function DivContainer({
   sectionId,
   title,
 }) {
-  const onClick = ({ link }) => {
+  const onClick = (link) => {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "position_ranking", {
         link_text: title,
