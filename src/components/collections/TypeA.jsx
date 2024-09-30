@@ -97,16 +97,21 @@ export default function TypeA({ data }) {
     ],
   };
 
-  const click = (link) => {
+  const click = (title, link) => {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "click", {
         branch: "dev",
         link_url: link,
       });
+
+      window.gtag("event", "position_ranking", {
+        section_name: "Product",
+        link_text: title,
+        url: link,
+      });
     }
   };
 
-  console.log(list);
   return (
     <div>
       <Slider {...settings}>
@@ -115,7 +120,7 @@ export default function TypeA({ data }) {
             <a
               href={item.link}
               target="_blank"
-              onClick={() => click(item.link)}
+              onClick={() => click(item.heading?.txt, item.link)}
             >
               <div
                 className={`img-container-3 ${isSqr ? "img-sqr" : "img-vt"}`}

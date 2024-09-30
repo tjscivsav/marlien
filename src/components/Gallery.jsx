@@ -38,6 +38,7 @@ export function DivContainer({
   const onClick = (link) => {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "position_ranking", {
+        section_name: "Gallery",
         link_text: title,
         url: link,
       });

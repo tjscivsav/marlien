@@ -10,6 +10,16 @@ const TypeC = ({ data }) => {
     borderStyle: "solid",
   };
 
+  const onClick = (title, link) => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "position_ranking", {
+        section_name: "Product",
+        link_text: title,
+        url: link,
+      });
+    }
+  };
+
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {list.map((item, index) => (
@@ -19,7 +29,11 @@ const TypeC = ({ data }) => {
           style={borderData?.enable ? border : {}}
         >
           <div className="bg-[#dedddd] relative rounded-2xl overflow-hidden">
-            <a href={item.link} target="_blank">
+            <a
+              href={item.link}
+              target="_blank"
+              onClick={() => onClick(item.heading?.txt, item.link)}
+            >
               <Image
                 asset={item?.img?.asset}
                 hotspot={item?.img?.hotspot}
@@ -33,6 +47,7 @@ const TypeC = ({ data }) => {
               className="flex items-center text-xs md:text-sm justify-center left-0 right-0 z-10 bottom-0 absolute uppercase bg-blue-300 py-1 md:py-2 transition-all duration-500 md:translate-y-14 opacity-70 md:opacity-100 md:group-hover:translate-y-0 md:hover:text-white md:hover:bg-[#25ABE2]"
               href={item.link}
               target="_blank"
+              onClick={() => onClick(item.heading?.txt, item.link)}
               //   onClick={() =>
               //     itemToCart(variant ? variant : store?.variants[0].store.gid)
               //   }
@@ -55,7 +70,11 @@ const TypeC = ({ data }) => {
             </a>
           </div>
           <div className="p-3">
-            <a href={item.link} target="_blank">
+            <a
+              href={item.link}
+              target="_blank"
+              onClick={() => onClick(item.heading?.txt, item.link)}
+            >
               <p
                 className="font-normal text-base hover:underline"
                 style={{
