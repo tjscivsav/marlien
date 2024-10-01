@@ -104,7 +104,16 @@ export default function TypeA({ data }) {
         link_url: link,
       });
 
-      window.gtag("event", "position_ranking", {
+      // window.gtag("event", "position_ranking", {
+      //   section_name: "Product",
+      //   link_text: title,
+      //   url: link,
+      // });
+    }
+
+    if (typeof window !== "undefined" && window.dataLayer) {
+      window.dataLayer.push({
+        event: "position_ranking",
         section_name: "Product",
         link_text: title,
         url: link,

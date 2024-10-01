@@ -36,12 +36,18 @@ export function DivContainer({
   title,
 }) {
   const onClick = (link) => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "position_ranking", {
+    if (typeof window !== "undefined" && window.dataLayer) {
+      window.dataLayer.push({
+        event: "position_ranking",
         section_name: "Gallery",
         link_text: title,
         url: link,
       });
+      // window.gtag("event", "position_ranking", {
+      //   section_name: "Gallery",
+      //   link_text: title,
+      //   url: link,
+      // });
     }
   };
   if (linkType === "sectionId") {
